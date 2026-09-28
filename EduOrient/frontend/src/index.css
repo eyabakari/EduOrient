@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/* Aligner les utilitaires `dark:*` sur la classe `dark` du document (applyTheme), pas sur prefers-color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  color-scheme: light;
+  --page-bg: #F8F9FD;
+  --card-bg: #ffffff;
+  --text: #2B3674;
+  --muted: #5a6376;
+  --border: #E9EDF7;
+  --primary: #4318FF;
+  --primary-hover: #3b12e0;
+  --sidebar-bg: #FAFAFC;
+  --sidebar-active: #EDE7F6;
+  --navbar-bg: #F5F6FA;
+  --block-bg: #F8F9FD;
+  --switch-off: #E2E8F0;
+  --shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+  --drawer-link-active-bg: rgba(67, 24, 255, 0.08);
+  background-color: var(--page-bg);
+  color: var(--text);
+}
+
+html.dark {
+  color-scheme: dark;
+  --page-bg: #1a1b23;
+  --card-bg: #252736;
+  --text: #e4e6ef;
+  --muted: #a3aed0;
+  --border: #323248;
+  --primary: #9D7BFF;
+  --primary-hover: #8B6FE8;
+  --sidebar-bg: #1e1f2a;
+  --sidebar-active: rgba(157, 123, 255, 0.25);
+  --navbar-bg: #252736;
+  --block-bg: #22232e;
+  --switch-off: #3d3e4f;
+  --shadow: 0px 18px 40px rgba(0, 0, 0, 0.35);
+  --drawer-link-active-bg: rgba(157, 123, 255, 0.2);
+  background-color: var(--page-bg);
+  color: var(--text);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text);
+}
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: var(--muted);
+}
+
+/* Theme-aware utilities (work in light + dark) */
+.bg-page { background-color: var(--page-bg); }
+.bg-card { background-color: var(--card-bg); }
+.bg-block { background-color: var(--block-bg); }
+.text-body { color: var(--text); }
+.text-muted { color: var(--muted); }
+.border-theme { border-color: var(--border); }
+.bg-primary { background-color: var(--primary); }
+.bg-primary:hover { background-color: var(--primary-hover); }
+.shadow-theme { box-shadow: var(--shadow); }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe area for bottom nav on notched devices */
+.safe-area-pb {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+}

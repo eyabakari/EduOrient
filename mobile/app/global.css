@@ -1,0 +1,197 @@
+/*
+ * Styles globaux NativeWind : directives @tailwind + variables :root / .dark.
+ * Les variables --color-* peuvent être surchargées en JS (AppThemeShell + buildAppCssVars).
+ * @see https://www.nativewind.dev/docs/core-concepts/tailwind-css
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* EduOrient Skill-Up — dark mode bleu nuit (#080F1C), accents sur les CTA uniquement */
+:root {
+  --background: #080f1c;
+  --foreground: oklch(0.95 0.01 250);
+  --card: oklch(0.18 0.025 265);
+  --card-foreground: oklch(0.95 0.01 250);
+  --popover: oklch(0.16 0.02 260);
+  --popover-foreground: oklch(0.95 0.01 250);
+  --primary: oklch(0.7 0.18 280);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.22 0.03 265);
+  --secondary-foreground: oklch(0.9 0.02 250);
+  --muted: oklch(0.2 0.02 260);
+  --muted-foreground: oklch(0.65 0.03 250);
+  --accent: oklch(0.75 0.15 200);
+  --accent-foreground: oklch(0.12 0.02 260);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.28 0.04 270);
+  --input: oklch(0.22 0.03 265);
+  --ring: oklch(0.7 0.18 280);
+  --chart-1: oklch(0.7 0.18 280);
+  --chart-2: oklch(0.75 0.15 200);
+  --chart-3: oklch(0.65 0.2 290);
+  --chart-4: oklch(0.7 0.12 180);
+  --chart-5: oklch(0.6 0.15 250);
+  --radius: 1rem;
+  --sidebar: oklch(0.14 0.02 260);
+  --sidebar-foreground: oklch(0.95 0.01 250);
+  --sidebar-primary: oklch(0.7 0.18 280);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.22 0.03 265);
+  --sidebar-accent-foreground: oklch(0.9 0.02 250);
+  --sidebar-border: oklch(0.28 0.04 270);
+  --sidebar-ring: oklch(0.7 0.18 280);
+
+  --neon-cyan: oklch(0.8 0.15 195);
+  --neon-violet: oklch(0.7 0.2 285);
+  --neon-blue: oklch(0.6 0.18 260);
+  --glass-bg: oklch(0.2 0.03 265 / 0.4);
+  --glass-border: oklch(0.4 0.05 270 / 0.3);
+  --success: oklch(0.7 0.18 145);
+  --success-foreground: oklch(0.15 0.02 145);
+}
+
+/* Light Mode */
+.light {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --card-border: #E2E8F0;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
+  --primary: oklch(0.7 0.18 280);
+  --primary-foreground: #FFFFFF;
+  --secondary: #E2E8F0;
+  --secondary-foreground: #1E293B;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: oklch(0.75 0.15 200);
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --input: #F1F5F9;
+  --ring: oklch(0.7 0.18 280);
+  --chart-1: oklch(0.7 0.18 280);
+  --chart-2: oklch(0.75 0.15 200);
+  --chart-3: oklch(0.65 0.2 290);
+  --chart-4: oklch(0.7 0.12 180);
+  --chart-5: oklch(0.6 0.15 250);
+  --sidebar: #F8FAFC;
+  --sidebar-foreground: #0F172A;
+  --sidebar-primary: oklch(0.7 0.18 280);
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E2E8F0;
+  --sidebar-accent-foreground: #1E293B;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: oklch(0.7 0.18 280);
+  --glass-bg: rgba(248, 250, 252, 0.4);
+  --glass-border: rgba(226, 232, 240, 0.3);
+  --success: #10B981;
+  --success-foreground: #FFFFFF;
+}
+
+/* Pas de `* { @apply ... }` ici : sur React Native / NativeWind ça fait exploser la taille du CSS
+   compilé (LightningCSS) et bloque Metro autour de 99 %. Les couleurs viennent de tailwind.config.js. */
+
+/* Glassmorphism utilities (web / compat) */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+  background: oklch(0.2 0.03 265 / 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid oklch(0.4 0.05 270 / 0.4);
+}
+
+.neon-glow-cyan {
+  box-shadow:
+    0 0 20px oklch(0.8 0.15 195 / 0.4),
+    0 0 40px oklch(0.8 0.15 195 / 0.2),
+    inset 0 0 20px oklch(0.8 0.15 195 / 0.1);
+}
+
+.neon-glow-violet {
+  box-shadow:
+    0 0 20px oklch(0.7 0.2 285 / 0.4),
+    0 0 40px oklch(0.7 0.2 285 / 0.2),
+    inset 0 0 20px oklch(0.7 0.2 285 / 0.1);
+}
+
+.neon-text-cyan {
+  text-shadow:
+    0 0 10px oklch(0.8 0.15 195 / 0.8),
+    0 0 20px oklch(0.8 0.15 195 / 0.5),
+    0 0 30px oklch(0.8 0.15 195 / 0.3);
+}
+
+.neon-text-violet {
+  text-shadow:
+    0 0 10px oklch(0.7 0.2 285 / 0.8),
+    0 0 20px oklch(0.7 0.2 285 / 0.5),
+    0 0 30px oklch(0.7 0.2 285 / 0.3);
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 15px oklch(0.75 0.15 200 / 0.5),
+      0 0 30px oklch(0.75 0.15 200 / 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 25px oklch(0.75 0.15 200 / 0.7),
+      0 0 50px oklch(0.75 0.15 200 / 0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.gradient-radial {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(34, 211, 238, 0.06) 0%, transparent 45%),
+    #080f1c;
+}
+
+@keyframes progress-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-progress-spin {
+  animation: progress-spin 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-locked {
+  background: linear-gradient(
+    90deg,
+    oklch(0.25 0.03 265) 0%,
+    oklch(0.3 0.04 270) 50%,
+    oklch(0.25 0.03 265) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
